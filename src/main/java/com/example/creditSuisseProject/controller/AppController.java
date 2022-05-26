@@ -1,7 +1,9 @@
 package com.example.creditSuisseProject.controller;
 
+import com.example.creditSuisseProject.model.Post;
 import com.example.creditSuisseProject.model.Role;
 import com.example.creditSuisseProject.model.User;
+import com.example.creditSuisseProject.service.PostService;
 import com.example.creditSuisseProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ public class AppController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private PostService postService;
 
     @GetMapping("")
     public String viewHomePage() {
@@ -54,6 +59,27 @@ public class AppController {
         model.addAttribute("listUsers", listUsers);
 
         return "users";
+    }
+
+    @GetMapping("/addPost")
+    public String showAddPost(Model model)
+    {
+        model.addAttribute("post", new Post());
+        return "addPost";
+    }
+
+//    @PostMapping("/addP")
+//    public String savePost(@RequestParam("file") MultipartFile file,
+//                           @RequestParam("desc") String desc)
+//    {
+//        postService.savePostToDB(file, desc);
+//        return "post_success";
+//    }
+
+    @PostMapping("/addP")
+    public String savePost(Post post) {
+        postService.registerPost(post);
+        return "post_success";
     }
 
     @GetMapping("/chatroom")

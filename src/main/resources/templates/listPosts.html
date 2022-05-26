@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>List of Posts</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="col-12">
+
+
+    <h3 class="text-center">list of posts</h3>
+    <hr>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">image</th>
+        <th scope="col">id</th>
+        <th scope="col">description</th>
+        <th scope="col">delete post</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="post : ${posts}">
+        <th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{post.image}}" style="width: 100px;height: 100px;"></th>
+        <td>[[*{post.id}]]
+
+        </td>
+
+        <td>[[*{post.description}]] <!-- Button trigger modal -->
+
+        </td>
+
+        <td><a th:href="@{/deletePost/{id}(id=${post.id})}"
+               class="btn btn-danger mt-4">delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+    <hr>
+  </div>
+
+</body>
+</html>

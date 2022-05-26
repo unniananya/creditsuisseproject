@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Add Post</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--    <div class="card">-->
+<!--        <div class="card-header">-->
+<!--            <p class="h4 mb-2 text-center">Add Post</p>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--            <form class="text-center border border-light p-5" action="#!"-->
+<!--                  style="max-width: 600px; margin: 0 auto;">-->
+
+
+
+<!--                &lt;!&ndash; Description &ndash;&gt;-->
+<!--                <textarea class="form-control mb-4" id="desc" name="desc"-->
+<!--                          placeholder="Post Description">Post Description-->
+<!--                                     </textarea>-->
+<!--                <div class="custom-file mb-4">-->
+<!--                    <input type="file" name="file" class="custom-file-input"-->
+<!--                           id="customFile"> <label class="custom-file-label"-->
+<!--                                                   for="customFile">Post Image</label>-->
+<!--                </div>-->
+<!--                &lt;!&ndash; Sign in button &ndash;&gt;-->
+<!--                <button class="btn btn-info btn-block" type="submit">add</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="container text-center">
+        <div>
+            <h1>Add a Post</h1>
+        </div>
+        <form th:action="@{/addP}" th:object="${post}"
+              method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+<!--                <input type="hidden" th:value="${#authentication.principal.user}" name='user'/>-->
+
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Description </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{description}" class="form-control"
+                               required minlength="2" maxlength="40"/>
+                    </div>
+                </div>
+                <div class="custom-file mb-4">
+                    <input type="file" th:field="*{image}" name="file" class="custom-file-input"
+                           id="customFile"> <label class="custom-file-label"
+                                                   for="customFile">Post Image</label>
+                </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </div>
+            </div>
+
+        </form>
+    </div>
+    </body>
+</html>
