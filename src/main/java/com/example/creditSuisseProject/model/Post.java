@@ -1,5 +1,9 @@
 package com.example.creditSuisseProject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.relational.core.sql.In;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,9 +12,11 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String description;
-    @Lob
-    @Column(columnDefinition = "MEDIUMBLOB")
+    @Column(nullable = true, length = 64)
     private String image;
+//    @Lob
+//    @Column(columnDefinition = "MEDIUMBLOB")
+//    private String image;
 
 //    @ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.PERSIST)
 //    @JoinTable(name = "user_post", joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = true),
@@ -18,7 +24,7 @@ public class Post {
 //    @JsonIgnoreProperties("postList")
 //    private User user;
 
-//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    //    @ManyToOne(fetch = FetchType.EAGER, optional = false)
 //    @JoinColumn(name = "user_id", nullable = false)
 //    private User user;
 //    private MultipartFile file;
@@ -73,7 +79,7 @@ public class Post {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -85,7 +91,12 @@ public class Post {
         this.description = description;
     }
 
+    @Transient
+    public String getPhotoImagePath() {
+        if (this.image == null) return null;
 
+        return "/post-images/" + this.id + "/" + this.image;
+    }
 
 
     @Override
