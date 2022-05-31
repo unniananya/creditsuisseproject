@@ -1,10 +1,16 @@
 package com.example.creditSuisseProject.service;
 
 import com.example.creditSuisseProject.model.Post;
+import com.example.creditSuisseProject.model.Role;
+import com.example.creditSuisseProject.model.User;
 import com.example.creditSuisseProject.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -32,6 +38,11 @@ public class PostService {
 //        postRepository.save(p);
 //    }
 
+    public Post save(Post post) {
+
+        return postRepository.save(post);
+    }
+
     public void registerPost(Post post){
 //        String image = post.getImage();
 //        String newimage=Base64.getEncoder().encodeToString(image.getBytes());
@@ -44,7 +55,7 @@ public class PostService {
     {
         return postRepository.findAll();
     }
-    public void deletePostById(Long id)
+    public void deletePostById(long id)
     {
         postRepository.deleteById(id);
     }

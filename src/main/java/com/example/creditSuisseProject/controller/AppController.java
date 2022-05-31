@@ -1,18 +1,26 @@
 package com.example.creditSuisseProject.controller;
 
+import java.io.IOException;
+import java.util.List;
+
+import com.example.creditSuisseProject.model.CustomUserDetails;
 import com.example.creditSuisseProject.model.Post;
 import com.example.creditSuisseProject.model.Role;
 import com.example.creditSuisseProject.model.User;
 import com.example.creditSuisseProject.service.PostService;
 import com.example.creditSuisseProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class AppController {
@@ -36,12 +44,12 @@ public class AppController {
         return "signup_form";
     }
 
-    @GetMapping("/mentee_home")
+    @GetMapping("/users/mentee_home")
     public String viewMenteeHomePage() {
         return "mentee_home";
     }
 
-    @GetMapping("/mentor_home")
+    @GetMapping("/users/mentor_home")
     public String viewMentorHomePage() {
         return "mentor_home";
     }
@@ -53,18 +61,13 @@ public class AppController {
         return "register_success";
     }
 
-    @GetMapping("/users")
-    public String listUsers(Model model) {
-        List<User> listUsers = service.listAll();
-        model.addAttribute("listUsers", listUsers);
-
-        return "users";
-    }
-
-    @GetMapping("/addPost")
+    @GetMapping("/users/addPost")
     public String showAddPost(Model model)
     {
         model.addAttribute("post", new Post());
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        ((UserDetails)principal).se
+
         return "addPost";
     }
 
@@ -76,16 +79,21 @@ public class AppController {
 //        return "post_success";
 //    }
 
-    @PostMapping("/addP")
-    public String savePost(Post post) {
-        postService.registerPost(post);
-        return "post_success";
-    }
+//    @PostMapping("/users/addP")
+//    public String savePost(Post post) {
+//        postService.registerPost(post);
+////        user.setPost(post);
+//        return "post_success";
+//    }
 
-    @GetMapping("/chatroom")
-    public String viewChatPage() {
 
-        return "chat-app";
+
+    @GetMapping("/users")
+    public String listUsers(Model model) {
+        List<User> listUsers = service.listAll();
+        model.addAttribute("listUsers", listUsers);
+
+        return "users";
     }
 
     @GetMapping("/users/edit/{id}")
@@ -95,6 +103,12 @@ public class AppController {
         model.addAttribute("user", user);
         model.addAttribute("listRoles", listRoles);
         return "user_form";
+    }
+
+    @GetMapping("/users/chatroom")
+    public String viewChatPage(){
+
+        return "chat-app";
     }
 
     @PostMapping("/users/save")

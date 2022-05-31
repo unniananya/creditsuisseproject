@@ -33,35 +33,44 @@
 <!--        </div>-->
 <!--    </div>-->
 
-    <div class="container text-center">
-        <div>
-            <h1>Add a Post</h1>
-        </div>
-        <form th:action="@{/addP}" th:object="${post}"
-              method="post" style="max-width: 600px; margin: 0 auto;">
-            <div class="m-3">
-<!--                <input type="hidden" th:value="${#authentication.principal.user}" name='user'/>-->
+<div class="container text-center">
+    <div>
+        <h1>Add a Post</h1>
+    </div>
+    <form th:action="@{/users/addP}" th:object="${post}"
+          method="post" style="max-width: 600px; margin: 0 auto;"
+          enctype="multipart/form-data">
+
+        <input type="hidden" th:field="*{id}" />
+        <div class="m-3">
+            <!--                <input type="hidden" th:value="${#authentication.principal.user}" name='user'/>-->
 
 
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Description </label>
-                    <div class="col-8">
-                        <input type="text" th:field="*{description}" class="form-control"
-                               required minlength="2" maxlength="40"/>
-                    </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Description </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{description}" class="form-control"
+                           required minlength="2" maxlength="40"/>
                 </div>
-                <div class="custom-file mb-4">
-                    <input type="file" th:field="*{image}" name="file" class="custom-file-input"
-                           id="customFile"> <label class="custom-file-label"
-                                                   for="customFile">Post Image</label>
-                </div>
+            </div>
+            <!--                <div class="custom-file mb-4">-->
+            <!--                    <input type="file" th:field="*{image}" name="file" class="custom-file-input"-->
+            <!--                           id="customFile"> <label class="custom-file-label"-->
+            <!--                                                   for="customFile">Post Image</label>-->
+            <!--                </div>-->
+            <div>
 
-                    <div>
-                        <button type="submit" class="btn btn-primary">Post</button>
-                    </div>
+                <label>Image: </label>
+                <input type="file" name="fileImage" id="fileImage" accept="image/png, image/jpeg" />
+
             </div>
 
-        </form>
-    </div>
-    </body>
+            <div>
+                <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
 </html>
