@@ -3,26 +3,59 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Welcome to Mentor Home</title>
-    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <script src="/webjars/jquery/jquery.min.js" type="text/javascript"></script>
-    <script src="/webjars/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
     <!--    <script type="text/javascript" th:src="@{/js/webscoket.js}"></script>-->
 </head>
-<body>
-<div class="container text-center">
-    <h1>Welcome to Mentor Home</h1>
+<body th:style="'background: url(/images/background1.svg) center center no-repeat fixed;'">
 
-    <h3><a onclick="return getID();" th:href="@{chatroom}">Chat Here</a></h3>
-    <script type="text/javascript">
-        function getID() {
-            localStorage.setItem("userId",[[${#request.userPrincipal.principal.id}]]);
-            return true;
-        }
+<header>
+    <nav>
+        <!--			<a href="#"><img class="logo" src="./images/logo.svg" alt="Travely Logo | Homepage" /></a>-->
+        <div class="links">
+            <form th:action="@{/logout}" method="post" onsubmit="logout()">
 
-    </script>
+                <input type="submit" value="Logout" class="button__med" />
+            </form>
 
-    <h3><a th:href="@{addPost}">Add a Post</a></h3>
-</div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="info">
+        <h1 class="hero__font">Welcome to Mentor Home</h1>
+        <div class="icons">
+            <div class="icon">
+                <img th:src="@{/images/chat.png}" alt="Chat" />
+                <div class="icon__info">
+                    <a th:href="@{/users/chatroom}" onclick="return getID();" class="icon__top">Chat Here</a>
+                    <script type="text/javascript">
+                        function getID() {
+                            localStorage.setItem("userId",[[${#request.userPrincipal.principal.id}]]);
+                            return true;
+                        }
+                        </script>
+
+
+                </div>
+            </div>
+            <div class="icon">
+                <img th:src="@{/images/post.png}" alt="Post" />
+                <div class="icon__info">
+                    <a th:href="@{/users/addPost}" class="icon__top">Add a Post</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+</main>
+
 
 </body>
+
 </html>
