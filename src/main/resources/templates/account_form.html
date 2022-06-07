@@ -25,47 +25,50 @@
 <div class="register">
     <!--			<div class="container text-center">-->
     <div>
-        <h1 class="hero__font";>User Registration - Sign Up</h1>
+        <h1 class="hero__font";>Your Account Details</h1>
     </div>
     <br/>
-    <form th:action="@{/process_register}" th:object="${user}"
+    <form th:action="@{/users/account/update}" th:object="${user}"
           method="post" style="max-width: 600px; margin: 0 auto;">
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{password}" />
+        <input type="hidden" th:field="*{noOfYearsExp}" />
+
         <div class="m-3">
             <div class="form-group row">
-                <label class="col-4 col-form-label" style="color:#fff">First Name: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{firstName}" class="form-control"
-                           required minlength="2" maxlength="20"/>
+                <label class="col-sm-4 col-form-label">E-mail:</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" th:field="*{email}" readonly="readonly" />
                 </div>
             </div>
             <br/>
             <div class="form-group row">
-                <label class="col-4 col-form-label" style="color:#fff">Last Name: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{lastName}" class="form-control"
-                           required minlength="2" maxlength="20" />
+                <label class="col-sm-4 col-form-label">First Name:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" th:field="*{firstName}" required minlength="2" maxlength="45"  />
                 </div>
             </div>
             <br/>
             <div class="form-group row">
-                <label class="col-4 col-form-label" style="color:#fff">E-mail: </label>
-                <div class="col-8">
-                    <input type="email" th:field="*{email}" class="form-control" required />
+                <label class="col-sm-4 col-form-label">Last Name:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" th:field="*{lastName}" required minlength="2" maxlength="45"  />
                 </div>
             </div>
             <br/>
             <div class="form-group row">
-                <label class="col-4 col-form-label" style="color:#fff">Username: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{username}" class="form-control" required minlength="2" maxlength="45"/>
+                <label class="col-sm-4 col-form-label">Username:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" th:field="*{username}" required minlength="2" maxlength="45"  />
                 </div>
             </div>
+
             <br/>
+
             <div class="form-group row">
-                <label class="col-4 col-form-label" style="color:#fff">Password: </label>
-                <div class="col-8">
-                    <input type="password" th:field="*{password}" class="form-control"
-                           required minlength="6" maxlength="10"/>
+                <label class="col-sm-4 col-form-label">Assigned Roles:</label>
+                <div class="col-sm-8">
+                    <span><b>[[${user.roles}]]</b></span>
                 </div>
             </div>
             <br/>
@@ -74,15 +77,15 @@
                 <div class="col-8" style="color:#fff">
                     <th:block th:each="role: ${listRoles}">
                         <input type="radio" th:field="*{roles}"
-                               th:text="${role.name}" th:value="${role.id}" class="m-2" />
+                               th:text="${role.name}" th:value="${role.id}" class="m-2" checked="yes" />
                     </th:block>
                 </div>
             </div>
             <br/>
             <div class="form-group row">
-                <label class="col-4 col-form-label" style="color:#fff">Organisation: </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{organisation}" class="form-control" required minlength="2" maxlength="45"/>
+                <label class="col-sm-4 col-form-label">Organisation:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" th:field="*{organisation}" required minlength="2" maxlength="45"  />
                 </div>
             </div>
             <br/>
@@ -128,15 +131,8 @@
                 </div>
             </div>
             <br/>
-            <div class="form-group row">
-                <label class="col-4 col-form-label" style="color:#fff">Number of Years of Experience: </label>
-                <div class="col-8">
-                    <input type="number" th:field="*{noOfYearsExp}" class="form-control" required/>
-                </div>
-            </div>
-            <br/>
             <div>
-                <button type="submit" class="button__med">Sign Up</button>
+                <button type="submit" class="button__med">Save</button>
             </div>
         </div>
     </form>

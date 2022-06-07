@@ -71,4 +71,16 @@ public class CustomUserDetails implements UserDetails {
         return user.getFirstName() + " " + user.getLastName();
     }
 
+    public void setIndustry(String industry) {
+        this.user.setIndustry(industry);
+    }
+
+    public void setOrganisation(String organisation) {
+        this.user.setOrganisation(organisation);
+    }
+
+    public void setInterest(String interest) {
+        this.user.setInterest(interest);
+    }
+
 }

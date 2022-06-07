@@ -1,9 +1,8 @@
 package com.example.creditSuisseProject.model;
 
+import java.util.*;
+
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -32,6 +31,109 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+
+    @Column(nullable = false, unique = true, length = 45)
+    private String username;
+
+    @Column(name = "organisation", nullable = false, length = 20)
+    private String organisation;
+
+//    @Column(name = "age")
+//    private Integer age;
+
+
+    @Column(name = "industry")
+    private String industry;
+
+    @Column(name = "interest")
+    private String interest;
+
+    @Column(name = "no_of_years_exp")
+    private Integer noOfYearsExp;
+
+    public String getOrganisation() {
+        return organisation;
+    }
+
+    public void setOrganisation(String organisation) {
+        this.organisation = organisation;
+    }
+
+//    public Integer getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(Integer age) {
+//        this.age = age;
+//    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public void setIndustry(String industry) {
+        this.industry = industry;
+    }
+
+    public String getInterest() {
+        return interest;
+    }
+
+    public void setInterest(String interest) {
+        this.interest = interest;
+    }
+
+    public Integer getNoOfYearsExp() {
+        return noOfYearsExp;
+    }
+
+    public void setNoOfYearsExp(Integer noOfYearsExp) {
+        this.noOfYearsExp = noOfYearsExp;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "users_posts",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "post_id")
+//    )
+//    private Set<Post> posts = new HashSet<>();
+//
+//    public void setPost(Post post){
+//        Set<Post> postList = this.getPosts();
+//        postList.add(post);
+//        this.setPosts(postList);
+//    }
+//
+//    public Set<Post> getPosts() {
+//        return posts;
+//    }
+//
+//    public void setPosts(Set<Post> posts) {
+//        this.posts = posts;
+//    }
+
+    //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
+//    private List<Post> postList = new ArrayList<>();
+//
+//    public List<Post> getPostList() {
+//        return postList;
+//    }
+//
+//    public void setPostList(List<Post> postList) {
+//        this.postList = postList;
+//    }
+
+//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
+//            cascade = CascadeType.ALL)
+//    private Set<Post> postSet;
 
     public Long getId() {
         return id;
@@ -96,5 +198,8 @@ public class User {
 
         return false;
     }
+
+
+
 }
 

@@ -44,6 +44,13 @@ public class UserService {
         userRepo.save(user);
     }
 
+    public void save1(User user) {
+        userRepo.save(user);
+    }
+
+    public User getByEmail(String email) {
+        return userRepo.findByEmail(email);
+    }
     private void encodePassword(User user) {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);

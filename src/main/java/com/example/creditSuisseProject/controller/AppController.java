@@ -61,6 +61,33 @@ public class AppController {
         return "register_success";
     }
 
+    @GetMapping("/users/account")
+    public String viewDetails(@AuthenticationPrincipal CustomUserDetails loggedUser,
+                              Model model) {
+
+        List<Role> listRoles = service.listRoles();
+        String email = loggedUser.getUsername();
+        User user = service.getByEmail(email);
+        model.addAttribute("user", user);
+        model.addAttribute("listRoles", listRoles);
+        return "account_form";
+
+    }
+
+    @PostMapping("/users/account/update")
+    public String saveDetails(User user, @AuthenticationPrincipal CustomUserDetails loggedUser){
+
+
+/*        loggedUser.setFirstName(user.getFirstName());
+        loggedUser.setLastName(user.getLastName());
+//        loggedUser.setIndustry(user.getIndustry());
+        loggedUser.setInterest(user.getInterest());
+        loggedUser.setOrganisation(user.getOrganisation());*/
+        service.save1(user);
+
+        return "account_success";
+    }
+
     @GetMapping("/users/addPost")
     public String showAddPost(Model model)
     {
