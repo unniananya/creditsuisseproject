@@ -1,9 +1,13 @@
 package com.example.creditSuisseProject.controller;
 
+import com.example.creditSuisseProject.model.CustomUserDetails;
 import com.example.creditSuisseProject.model.Post;
+import com.example.creditSuisseProject.model.User;
 import com.example.creditSuisseProject.repository.PostRepository;
 import com.example.creditSuisseProject.service.PostService;
+import com.example.creditSuisseProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -24,6 +28,9 @@ public class PostController {
     private PostService postService;
 
     @Autowired
+    private UserService service;
+
+    @Autowired
     private PostRepository repo;
 
     @GetMapping("/users/listPosts")
@@ -35,10 +42,13 @@ public class PostController {
     }
 
     @PostMapping("/users/addP")
-    public String savePost(@ModelAttribute(name="post") Post post, @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+    public String savePost(@AuthenticationPrincipal CustomUserDetails loggedUser, @ModelAttribute(name="post") Post post, @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
 
+        String email = loggedUser.getUsername();
+        User user = service.getByEmail(email);
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         post.setImage(fileName);
+        post.setUser(user);
 
         Post savedPost = postService.save(post);
 

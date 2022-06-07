@@ -1,5 +1,7 @@
 package com.example.creditSuisseProject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.*;
 
 import javax.persistence.*;
@@ -50,6 +52,10 @@ public class User {
 
     @Column(name = "no_of_years_exp")
     private Integer noOfYearsExp;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("user")
+    private List<Post> postList = new ArrayList<>();
 
     public String getOrganisation() {
         return organisation;

@@ -14,9 +14,24 @@ public class Post {
     private String description;
     @Column(nullable = true, length = 64)
     private String image;
-//    @Lob
-//    @Column(columnDefinition = "MEDIUMBLOB")
-//    private String image;
+
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("postList")
+    private User user;
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 //    @ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.PERSIST)
 //    @JoinTable(name = "user_post", joinColumns = @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = true),
@@ -24,7 +39,7 @@ public class Post {
 //    @JsonIgnoreProperties("postList")
 //    private User user;
 
-    //    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+//    @ManyToOne(fetch = FetchType.EAGER, optional = false)
 //    @JoinColumn(name = "user_id", nullable = false)
 //    private User user;
 //    private MultipartFile file;
