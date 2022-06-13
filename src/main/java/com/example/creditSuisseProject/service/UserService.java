@@ -39,6 +39,22 @@ public class UserService {
         return roleRepo.findAll();
     }
 
+
+    public List<User> findByUser(String keyword){
+        if (keyword != null){
+            return userRepo.findByUser(keyword);
+        }
+        return userRepo.findAll();
+
+    }
+
+    public List<User> findByIndustry(String industry) {
+        if (industry != null) {
+            return userRepo.findByIndustry(industry);
+        }
+        return userRepo.findAll();
+    }
+
     public void save(User user) {
         encodePassword(user);
         userRepo.save(user);

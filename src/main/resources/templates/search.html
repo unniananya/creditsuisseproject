@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <!--    <script type="text/javascript" th:src="@{/js/webscoket.js}"></script>-->
+</head>
+
+<body th:style="'background: url(/images/background1.svg) center center no-repeat fixed;'">
+
+<header>
+    <nav>
+        <!--			<a href="#"><img class="logo" src="./images/logo.svg" alt="Travely Logo | Homepage" /></a>-->
+        <div class="links">
+            <form th:action="@{/logout}" method="post" onsubmit="logout()">
+
+                <input type="submit" value="Logout" class="button__med" />
+            </form>
+
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="info">
+        <h1 class="hero__font">Search by Username</h1>
+        <form th:action="@{/users/search}">
+            Filter: <input type="text" name="keyword" id="keyword" th:value="${keyword}" required/>
+            &nbsp;
+            <input type="submit" value="Search" />
+            &nbsp;
+<!--            <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />-->
+        </form>
+<!--        <script type="text/javascript">-->
+<!--        function clearSearch() {-->
+<!--        window.location = "[[@{/users/search}]]";-->
+<!--        }-->
+<!--        </script>-->
+
+        <table class="table table-bordered table-sm mt-2">
+            <thead>
+            <tr>
+
+                <th>User's First Name</th>
+                <th>User's Last Name</th>
+                <th>Organisation</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="l : ${userList}" th:field="${l}">
+                <td th:text="${l.firstName}"></td>
+                <td th:text="${l.lastName}"></td>
+                <td th:text="${l.organisation}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+</main>
+</body>
+</html>

@@ -10,16 +10,14 @@ import com.example.creditSuisseProject.model.User;
 import com.example.creditSuisseProject.service.PostService;
 import com.example.creditSuisseProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
@@ -52,6 +50,25 @@ public class AppController {
     @GetMapping("/users/mentor_home")
     public String viewMentorHomePage() {
         return "mentor_home";
+    }
+
+
+    @RequestMapping("/users/search")
+    public String viewSearchPage(Model model, @Param("keyword") String keyword){
+        List<User> userList = service.findByUser(keyword);
+        model.addAttribute("userList", userList);
+        model.addAttribute("keyword", keyword);
+
+        return "search";
+    }
+
+    @RequestMapping("/users/filter")
+    public String viewFilterPage(Model model, @Param("industry") String industry){
+        List<User> userList = service.findByIndustry(industry);
+        model.addAttribute("userList", userList);
+        model.addAttribute("industry", industry);
+
+        return "filter";
     }
 
     @PostMapping("/process_register") //("/process_register")
