@@ -17,4 +17,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value = "select * from creditsuisse.users u where u.industry like %:industry%" , nativeQuery = true)
     public List<User> findByIndustry(@Param("industry") String industry);
+
+    @Query(value = "select * from creditsuisse.users u where u.interest like %:interest%" , nativeQuery = true)
+    public List<User> findByInterest(@Param("interest") String interest);
+
+    @Query(value = "select * from creditsuisse.users u where u.interest like %:interest% and u.industry like %:industry%" , nativeQuery = true)
+    public List<User> findByInterestandIndustry(@Param("interest") String interest, @Param("industry") String industry);
+
 }

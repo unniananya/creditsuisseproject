@@ -63,10 +63,11 @@ public class AppController {
     }
 
     @RequestMapping("/users/filter")
-    public String viewFilterPage(Model model, @Param("industry") String industry){
-        List<User> userList = service.findByIndustry(industry);
+    public String viewFilterPage(Model model,@Param("interest") String interest, @Param("industry") String industry){
+        List<User> userList = service.findByIndustryandInterest(interest, industry);
         model.addAttribute("userList", userList);
         model.addAttribute("industry", industry);
+        model.addAttribute("interest", interest);
 
         return "filter";
     }

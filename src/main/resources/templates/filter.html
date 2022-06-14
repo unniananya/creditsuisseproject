@@ -26,7 +26,7 @@
 
 <main>
     <section class="info">
-        <h1 class="hero__font">Filter by Industry</h1>
+        <h1 class="hero__font">Filter by Industry and Interest</h1>
         <form th:action="@{/users/filter}">
 
             <label class="col-4 col-form-label" style="color:#fff">Industry: </label>
@@ -46,6 +46,25 @@
                 <br style="clear: both;" />
                 <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>
             </div>
+
+            <label class="col-4 col-form-label" style="color:#fff">Interest: </label>
+            <!--					<div class="col-8">-->
+            <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
+            <!--					</div>-->
+            <div class="col-8">
+                <select name="interest" size = "5" multiple>
+                    <option value="Analytics">Analytics</option>
+                    <option value="Frontend">Frontend</option>
+                    <option value="Backend">Backend</option>
+                    <option value="Teaching">Teaching</option>
+                    <option value="Drawing">Drawing</option>
+                    <option value="Creating">Creating</option>
+                    <option value="Projects">Projects</option>
+
+                </select><br/>
+                <br style="clear: both;" />
+                <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>
+            </div>
             <!--            <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />-->
         </form>
         <!--        <script type="text/javascript">-->
@@ -62,6 +81,7 @@
                 <th>User's Last Name</th>
                 <th>Organisation</th>
                 <th>Industry</th>
+                <th>Interest</th>
 
             </tr>
             </thead>
@@ -71,6 +91,7 @@
                 <td th:text="${l.lastName}"></td>
                 <td th:text="${l.organisation}"></td>
                 <td th:text="${l.industry}"></td>
+                <td th:text="${l.interest}"></td>
             </tr>
             </tbody>
         </table>

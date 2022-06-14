@@ -48,9 +48,15 @@ public class UserService {
 
     }
 
-    public List<User> findByIndustry(String industry) {
-        if (industry != null) {
+    public List<User> findByIndustryandInterest(String interest, String industry) {
+        if (industry != null && interest !=null) {
+            return userRepo.findByInterestandIndustry(interest, industry);
+        }
+        else if (industry != null && interest ==null){
             return userRepo.findByIndustry(industry);
+        }
+        else if (industry == null && interest !=null){
+            return userRepo.findByInterest(interest);
         }
         return userRepo.findAll();
     }
