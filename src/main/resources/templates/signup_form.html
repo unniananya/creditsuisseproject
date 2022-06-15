@@ -92,7 +92,7 @@
                 <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
                 <!--					</div>-->
                 <div class="col-8">
-                    <select name="industry" id="lang" size = "5" multiple>
+                    <select th:field="*{industry}" size = "5" multiple>
                         <option value="Data">Data</option>
                         <option value="Software">Software</option>
                         <option value="Education">Education</option>
@@ -103,7 +103,7 @@
 
                     </select><br/>
                     <br style="clear: both;" />
-                    <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>
+<!--                    <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>-->
                 </div>
             </div>
             <br/>
@@ -113,7 +113,7 @@
                 <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
                 <!--					</div>-->
                 <div class="col-8">
-                    <select name="interest" size = "5" multiple>
+                    <select th:field="*{interest}" size = "5" multiple>
                         <option value="Analytics">Analytics</option>
                         <option value="Frontend">Frontend</option>
                         <option value="Backend">Backend</option>
@@ -124,7 +124,7 @@
 
                     </select><br/>
                     <br style="clear: both;" />
-                    <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>
+<!--                    <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>-->
                 </div>
             </div>
             <br/>
