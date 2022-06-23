@@ -25,7 +25,7 @@
 </header>
 
 <main>
-    <section class="info">
+    <section class="info1">
         <h1 class="hero__font">Welcome to Mentor Home</h1>
         <div class="icons">
             <div class="icon">
@@ -50,19 +50,28 @@
             </div>
 
             <div class="icon">
-                <a th:href="@{/users/account}" class="icon__top">View Account details</a>
+                <img th:src="@{/images/settings.png}" alt="Settings" />
+                <div class="icon__info">
+                    <a th:href="@{/users/account}" class="icon__top">View Account details</a>
+                </div>
+            </div>
+
+<!--            <div class="icon">-->
+<!--                <a th:href="@{/users/listPosts}" class="icon__top">View all Posts</a>-->
+<!--            </div>-->
+
+            <div class="icon">
+                <img th:src="@{/images/search.png}" alt="Search" />
+                <div class="icon__info">
+                    <a th:href="@{/users/search}" class="icon__top">Search</a>
+                </div>
             </div>
 
             <div class="icon">
-                <a th:href="@{/users/listPosts}" class="icon__top">View all Posts</a>
-            </div>
-
-            <div class="icon">
-                <a th:href="@{/users/search}" class="icon__top">Search</a>
-            </div>
-
-            <div class="icon">
-                <a th:href="@{/users/filter}" class="icon__top">Filter</a>
+                <img th:src="@{/images/filter.png}" alt="Filter" />
+                <div class="icon__info">
+                    <a th:href="@{/users/filter}" class="icon__top">Filter</a>
+                </div>
             </div>
 
         </div>

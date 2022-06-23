@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
     <!--    <script type="text/javascript" th:src="@{/js/webscoket.js}"></script>-->
 </head>
 
@@ -29,11 +30,12 @@
         <h1 class="hero__font">Filter by Industry and Interest</h1>
         <form th:action="@{/users/filter}">
 
-            <label class="col-4 col-form-label" style="color:#fff">Industry: </label>
+            <div style="float:left">
+            <label style="color:#fff;display: block;">Industry: </label>
             <!--					<div class="col-8">-->
             <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
             <!--					</div>-->
-            <div class="col-8">
+
                 <select th:value="*{industry}" name="industry" id="lang" size = "5" multiple>
                     <option value="Data">Data</option>
                     <option value="Software">Software</option>
@@ -42,17 +44,20 @@
                     <option value="Marketing">Marketing</option>
                     <option value="Design">Design</option>
                     <option value="Animation">Animation</option>
-                </select><br/>
-                <br style="clear: both;" />
+                </select>
+<!--                <br/>-->
+<!--                <br style="clear: both;" />-->
 <!--                <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>-->
             </div>
 
-            <label class="col-4 col-form-label" style="color:#fff">Interest: </label>
+
+            <div style="float:right" >
+            <label style="color:#fff;display:block;">Interest: </label>
             <!--					<div class="col-8">-->
             <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
             <!--					</div>-->
-            <div class="col-8">
-                <select th:value="*{interest}" name="interest" size = "5" multiple>
+
+                <select th:value="*{interest}" name="interest" size = "5" multiple >
                     <option value="Analytics">Analytics</option>
                     <option value="Frontend">Frontend</option>
                     <option value="Backend">Backend</option>
@@ -61,12 +66,18 @@
                     <option value="Creating">Creating</option>
                     <option value="Projects">Projects</option>
 
-                </select><br/>
-                <br style="clear: both;" />
+                </select>
+<!--                <br/>-->
+<!--                <br style="clear: both;" />-->
 <!--                <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>-->
             </div>
-
-            <input type="submit" value="Apply">
+            <br/>
+<!--            <br style="clear: both;" />-->
+<!--            <div class="container">-->
+            <div class="center">
+            <input type="submit" value="Apply" class="button__med1" >
+            </div>
+<!--            </div>-->
 <!--            <button type="submit" class="button__med">Apply</button>-->
             <!--            <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />-->
         </form>
@@ -76,28 +87,43 @@
         <!--        }-->
         <!--        </script>-->
 
-        <table class="table table-bordered table-sm mt-2">
-            <thead>
-            <tr>
+<!--        <table class="table table-bordered table-sm mt-2">-->
+<!--            <thead>-->
+<!--            <tr>-->
 
-                <th>User's First Name</th>
-                <th>User's Last Name</th>
-                <th>Organisation</th>
-                <th>Industry</th>
-                <th>Interest</th>
+<!--                <th>User's First Name</th>-->
+<!--                <th>User's Last Name</th>-->
+<!--                <th>Organisation</th>-->
+<!--                <th>Industry</th>-->
+<!--                <th>Interest</th>-->
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="l : ${userList}" th:field="${l}">
-                <td th:text="${l.firstName}"></td>
-                <td th:text="${l.lastName}"></td>
-                <td th:text="${l.organisation}"></td>
-                <td th:text="${l.industry}"></td>
-                <td th:text="${l.interest}"></td>
-            </tr>
-            </tbody>
-        </table>
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="l : ${userList}" th:field="${l}">-->
+<!--                <td th:text="${l.firstName}"></td>-->
+<!--                <td th:text="${l.lastName}"></td>-->
+<!--                <td th:text="${l.organisation}"></td>-->
+<!--                <td th:text="${l.industry}"></td>-->
+<!--                <td th:text="${l.interest}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+
+        <div class="wrapper">
+<!--            <div class="header">Results</div>-->
+
+            <div class="cards_wrap">
+                <th:block th:each="l : ${userList}" th:field="${l}">
+                <div class="card_item">
+                    <div class="card_inner">
+                        <h5 th:text="${l.username}" class="role_name"></h5>
+                        <h5 th:text="${l.organisation}" class="film"></h5>
+                    </div>
+                </div>
+                </th:block>
+            </div>
+        </div>
     </section>
 
 

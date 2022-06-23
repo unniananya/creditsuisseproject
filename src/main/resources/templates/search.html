@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
     <!--    <script type="text/javascript" th:src="@{/js/webscoket.js}"></script>-->
 </head>
 
@@ -40,24 +41,40 @@
 <!--        }-->
 <!--        </script>-->
 
-        <table class="table table-bordered table-sm mt-2">
-            <thead>
-            <tr>
+<!--        <table class="table table-bordered table-sm mt-2">-->
+<!--            <thead>-->
+<!--            <tr>-->
 
-                <th>User's First Name</th>
-                <th>User's Last Name</th>
-                <th>Organisation</th>
+<!--                <th>User's First Name</th>-->
+<!--                <th>User's Last Name</th>-->
+<!--                <th>Organisation</th>-->
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="l : ${userList}" th:field="${l}">
-                <td th:text="${l.firstName}"></td>
-                <td th:text="${l.lastName}"></td>
-                <td th:text="${l.organisation}"></td>
-            </tr>
-            </tbody>
-        </table>
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="l : ${userList}" th:field="${l}">-->
+<!--                <td th:text="${l.firstName}"></td>-->
+<!--                <td th:text="${l.lastName}"></td>-->
+<!--                <td th:text="${l.organisation}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+
+
+        <div class="wrapper">
+        <!--            <div class="header">Results</div>-->
+
+        <div class="cards_wrap">
+            <th:block th:each="l : ${userList}" th:field="${l}">
+                <div class="card_item">
+                    <div class="card_inner">
+                        <h5 th:text="${l.username}" class="role_name"></h5>
+                        <h5 th:text="${l.organisation}" class="film"></h5>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+        </div>
     </section>
 
 
