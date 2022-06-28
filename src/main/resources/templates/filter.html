@@ -7,6 +7,9 @@
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/styles/style1.css}" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <!--    <script type="text/javascript" th:src="@{/js/webscoket.js}"></script>-->
 </head>
 
@@ -36,7 +39,7 @@
             <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
             <!--					</div>-->
 
-                <select th:value="*{industry}" name="industry" id="lang" size = "5" multiple>
+                <select th:value="*{industry}" name="industry" multiple="multiple" id="myMulti">
                     <option value="Data">Data</option>
                     <option value="Software">Software</option>
                     <option value="Education">Education</option>
@@ -49,7 +52,7 @@
 <!--                <br style="clear: both;" />-->
 <!--                <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>-->
             </div>
-
+            <script  th:src="@{/js/style.js}"></script>
 
             <div style="float:right" >
             <label style="color:#fff;display:block;">Interest: </label>
@@ -57,7 +60,7 @@
             <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
             <!--					</div>-->
 
-                <select th:value="*{interest}" name="interest" size = "5" multiple >
+                <select th:value="*{interest}" name="interest" multiple="multiple" id="myMulti1">
                     <option value="Analytics">Analytics</option>
                     <option value="Frontend">Frontend</option>
                     <option value="Backend">Backend</option>
@@ -71,6 +74,7 @@
 <!--                <br style="clear: both;" />-->
 <!--                <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>-->
             </div>
+            <script  th:src="@{/js/style1.js}"></script>
             <br/>
 <!--            <br style="clear: both;" />-->
 <!--            <div class="container">-->
