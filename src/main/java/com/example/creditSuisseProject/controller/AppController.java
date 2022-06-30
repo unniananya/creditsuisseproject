@@ -42,6 +42,13 @@ public class AppController {
         return "signup_form";
     }
 
+    @GetMapping("/login")
+    public String viewLoginPage() {
+        // custom logic before showing login page...
+
+        return "login";
+    }
+
     @GetMapping("/users/mentee_home")
     public String viewMenteeHomePage() {
         return "mentee_home";

@@ -1,6 +1,7 @@
 package com.example.creditSuisseProject.config;
 
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.nio.file.Path;
@@ -14,6 +15,12 @@ public class MvcConfig implements WebMvcConfigurer{
         String postUploadPath = postUploadDir.toFile().getAbsolutePath();
 
         registry.addResourceHandler("/post-images/**").addResourceLocations("file:/" + postUploadPath + "/");
+    }
+
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
     }
 
     //    private void exposeDirectory(String dirName, ResourceHandlerRegistry registry) {

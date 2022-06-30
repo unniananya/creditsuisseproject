@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Sign Up - CodeJava</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link th:rel="stylesheet" th:href="@{/styles/bootstrap-select.css}"/>
+    <script type="text/javascript" src="/webjars/popper.js/umd/popper.min.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/bootstrap-select.js}"></script>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+</head>
+<body th:style="'background: url(/images/background1.svg) center center no-repeat fixed;'">
+
+<div class="register">
+    <form th:action="@{/login}" method="post" style="max-width: 350px; margin: 0 auto;">
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        <div class="border border-secondary p-3 rounded" style="background:#6f62b5;">
+            <h1 class="hero__font";>Login</h1>
+            </br>
+            <p>
+                <input type="email" name="email" class="form-control" placeholder="E-mail" required autofocus/>
+            </p>
+            <p>
+                <input type="password" name="password" class="form-control" placeholder="Password" required />
+            </p>
+            <p>
+                <input type="submit" value="Login" class="button__med" />
+            </p>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
