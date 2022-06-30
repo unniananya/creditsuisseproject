@@ -2,12 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Search</title>
+    <title>Sign Up - CodeJava</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link th:rel="stylesheet" th:href="@{/styles/bootstrap-select.css}"/>
+    <script type="text/javascript" src="/webjars/popper.js/umd/popper.min.js"></script>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/bootstrap-select.js}"></script>
     <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
-    <!--    <script type="text/javascript" th:src="@{/js/webscoket.js}"></script>-->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 </head>
 
 <body th:style="'background: url(/images/background1.svg) center center no-repeat fixed;'">
@@ -30,53 +34,101 @@
         <h1 class="hero__font">Filter by Industry and Interest</h1>
         <form th:action="@{/users/filter}">
 
-            <div style="float:left">
-                <label style="color:#fff;display: block;">Industry: </label>
+            <div class="form-group row">
+                <label class="col-4 col-form-label" style="color:#fff">Industry: </label>
+
+                <!--                <label class="col-4 col-form-label" style="color:#fff">Industry: </label>-->
                 <!--					<div class="col-8">-->
                 <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
                 <!--					</div>-->
+                <div class="col-8">
+                    <!--                <div class="col-8">-->
+                    <select class="form-control selectpicker" th:value="*{industry}" name="industry" multiple>
+                        <option value="Data">Data</option>
+                        <option value="Software">Software</option>
+                        <option value="Education">Education</option>
+                        <option value="Business">Business</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Design">Design</option>
+                        <option value="Animation">Animation</option>
 
-                <select th:value="*{industry}" name="industry" id="lang" size = "5" multiple>
-                    <option value="Data">Data</option>
-                    <option value="Software">Software</option>
-                    <option value="Education">Education</option>
-                    <option value="Business">Business</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="Design">Design</option>
-                    <option value="Animation">Animation</option>
-                </select>
-                <!--                <br/>-->
-                <!--                <br style="clear: both;" />-->
-                <!--                <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>-->
+                    </select>
+                    <br style="clear: both;" />
+                    <!--                    <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>-->
+                    <!--                </div>-->
+
+                </div>
             </div>
 
-
-            <div style="float:right" >
-                <label style="color:#fff;display:block;">Interest: </label>
+            <div class="form-group row">
+                <label class="col-4 col-form-label" style="color:#fff">Interest: </label>
                 <!--					<div class="col-8">-->
                 <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
                 <!--					</div>-->
+                <div class="col-8">
+                    <select class="form-control selectpicker" th:value="*{interest}" name="interest" multiple>
+                        <option value="Analytics">Analytics</option>
+                        <option value="Frontend">Frontend</option>
+                        <option value="Backend">Backend</option>
+                        <option value="Teaching">Teaching</option>
+                        <option value="Drawing">Drawing</option>
+                        <option value="Creating">Creating</option>
+                        <option value="Projects">Projects</option>
 
-                <select th:value="*{interest}" name="interest" size = "5" multiple >
-                    <option value="Analytics">Analytics</option>
-                    <option value="Frontend">Frontend</option>
-                    <option value="Backend">Backend</option>
-                    <option value="Teaching">Teaching</option>
-                    <option value="Drawing">Drawing</option>
-                    <option value="Creating">Creating</option>
-                    <option value="Projects">Projects</option>
+                    </select>
 
-                </select>
-                <!--                <br/>-->
-                <!--                <br style="clear: both;" />-->
-                <!--                <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>-->
+                    <!--                    <br style="clear: both;" />-->
+                    <!--                    <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>-->
+                </div>
             </div>
-            <br/>
+
+<!--            <div style="float:left">-->
+<!--                <label style="color:#fff;display: block;">Industry: </label>-->
+<!--                &lt;!&ndash;					<div class="col-8">&ndash;&gt;-->
+<!--                &lt;!&ndash;						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>&ndash;&gt;-->
+<!--                &lt;!&ndash;					</div>&ndash;&gt;-->
+
+<!--                <select th:value="*{industry}" name="industry" id="lang" size = "5" multiple>-->
+<!--                    <option value="Data">Data</option>-->
+<!--                    <option value="Software">Software</option>-->
+<!--                    <option value="Education">Education</option>-->
+<!--                    <option value="Business">Business</option>-->
+<!--                    <option value="Marketing">Marketing</option>-->
+<!--                    <option value="Design">Design</option>-->
+<!--                    <option value="Animation">Animation</option>-->
+<!--                </select>-->
+<!--                &lt;!&ndash;                <br/>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <br style="clear: both;" />&ndash;&gt;-->
+<!--                &lt;!&ndash;                <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>&ndash;&gt;-->
+<!--            </div>-->
+
+
+<!--            <div style="float:right" >-->
+<!--                <label style="color:#fff;display:block;">Interest: </label>-->
+<!--                &lt;!&ndash;					<div class="col-8">&ndash;&gt;-->
+<!--                &lt;!&ndash;						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>&ndash;&gt;-->
+<!--                &lt;!&ndash;					</div>&ndash;&gt;-->
+
+<!--                <select th:value="*{interest}" name="interest" size = "5" multiple >-->
+<!--                    <option value="Analytics">Analytics</option>-->
+<!--                    <option value="Frontend">Frontend</option>-->
+<!--                    <option value="Backend">Backend</option>-->
+<!--                    <option value="Teaching">Teaching</option>-->
+<!--                    <option value="Drawing">Drawing</option>-->
+<!--                    <option value="Creating">Creating</option>-->
+<!--                    <option value="Projects">Projects</option>-->
+
+<!--                </select>-->
+<!--                &lt;!&ndash;                <br/>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <br style="clear: both;" />&ndash;&gt;-->
+<!--                &lt;!&ndash;                <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <br/>-->
             <!--            <br style="clear: both;" />-->
             <!--            <div class="container">-->
-            <div class="center">
-                <input type="submit" value="Apply" class="button__med1" >
-            </div>
+<!--            <div class="center">-->
+            <input type="submit" value="Apply" class="button__med1" >
+<!--            </div>-->
             <!--            </div>-->
             <!--            <button type="submit" class="button__med">Apply</button>-->
             <!--            <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />-->
