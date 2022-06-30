@@ -7,9 +7,6 @@
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/styles/style1.css}" crossorigin="anonymous">
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
     <!--    <script type="text/javascript" th:src="@{/js/webscoket.js}"></script>-->
 </head>
 
@@ -34,12 +31,12 @@
         <form th:action="@{/users/filter}">
 
             <div style="float:left">
-            <label style="color:#fff;display: block;">Industry: </label>
-            <!--					<div class="col-8">-->
-            <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
-            <!--					</div>-->
+                <label style="color:#fff;display: block;">Industry: </label>
+                <!--					<div class="col-8">-->
+                <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
+                <!--					</div>-->
 
-                <select th:value="*{industry}" name="industry" multiple="multiple" id="myMulti">
+                <select th:value="*{industry}" name="industry" id="lang" size = "5" multiple>
                     <option value="Data">Data</option>
                     <option value="Software">Software</option>
                     <option value="Education">Education</option>
@@ -48,19 +45,19 @@
                     <option value="Design">Design</option>
                     <option value="Animation">Animation</option>
                 </select>
-<!--                <br/>-->
-<!--                <br style="clear: both;" />-->
-<!--                <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>-->
+                <!--                <br/>-->
+                <!--                <br style="clear: both;" />-->
+                <!--                <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>-->
             </div>
-            <script  th:src="@{/js/style.js}"></script>
+
 
             <div style="float:right" >
-            <label style="color:#fff;display:block;">Interest: </label>
-            <!--					<div class="col-8">-->
-            <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
-            <!--					</div>-->
+                <label style="color:#fff;display:block;">Interest: </label>
+                <!--					<div class="col-8">-->
+                <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
+                <!--					</div>-->
 
-                <select th:value="*{interest}" name="interest" multiple="multiple" id="myMulti1">
+                <select th:value="*{interest}" name="interest" size = "5" multiple >
                     <option value="Analytics">Analytics</option>
                     <option value="Frontend">Frontend</option>
                     <option value="Backend">Backend</option>
@@ -70,19 +67,18 @@
                     <option value="Projects">Projects</option>
 
                 </select>
-<!--                <br/>-->
-<!--                <br style="clear: both;" />-->
-<!--                <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>-->
+                <!--                <br/>-->
+                <!--                <br style="clear: both;" />-->
+                <!--                <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>-->
             </div>
-            <script  th:src="@{/js/style1.js}"></script>
             <br/>
-<!--            <br style="clear: both;" />-->
-<!--            <div class="container">-->
+            <!--            <br style="clear: both;" />-->
+            <!--            <div class="container">-->
             <div class="center">
-            <input type="submit" value="Apply" class="button__med1" >
+                <input type="submit" value="Apply" class="button__med1" >
             </div>
-<!--            </div>-->
-<!--            <button type="submit" class="button__med">Apply</button>-->
+            <!--            </div>-->
+            <!--            <button type="submit" class="button__med">Apply</button>-->
             <!--            <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />-->
         </form>
         <!--        <script type="text/javascript">-->
@@ -91,40 +87,43 @@
         <!--        }-->
         <!--        </script>-->
 
-<!--        <table class="table table-bordered table-sm mt-2">-->
-<!--            <thead>-->
-<!--            <tr>-->
+        <!--        <table class="table table-bordered table-sm mt-2">-->
+        <!--            <thead>-->
+        <!--            <tr>-->
 
-<!--                <th>User's First Name</th>-->
-<!--                <th>User's Last Name</th>-->
-<!--                <th>Organisation</th>-->
-<!--                <th>Industry</th>-->
-<!--                <th>Interest</th>-->
+        <!--                <th>User's First Name</th>-->
+        <!--                <th>User's Last Name</th>-->
+        <!--                <th>Organisation</th>-->
+        <!--                <th>Industry</th>-->
+        <!--                <th>Interest</th>-->
 
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr th:each="l : ${userList}" th:field="${l}">-->
-<!--                <td th:text="${l.firstName}"></td>-->
-<!--                <td th:text="${l.lastName}"></td>-->
-<!--                <td th:text="${l.organisation}"></td>-->
-<!--                <td th:text="${l.industry}"></td>-->
-<!--                <td th:text="${l.interest}"></td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
+        <!--            </tr>-->
+        <!--            </thead>-->
+        <!--            <tbody>-->
+        <!--            <tr th:each="l : ${userList}" th:field="${l}">-->
+        <!--                <td th:text="${l.firstName}"></td>-->
+        <!--                <td th:text="${l.lastName}"></td>-->
+        <!--                <td th:text="${l.organisation}"></td>-->
+        <!--                <td th:text="${l.industry}"></td>-->
+        <!--                <td th:text="${l.interest}"></td>-->
+        <!--            </tr>-->
+        <!--            </tbody>-->
+        <!--        </table>-->
 
         <div class="wrapper">
-<!--            <div class="header">Results</div>-->
+            <!--            <div class="header">Results</div>-->
 
             <div class="cards_wrap">
                 <th:block th:each="l : ${userList}" th:field="${l}">
-                <div class="card_item">
-                    <div class="card_inner">
-                        <h5 th:text="${l.username}" class="role_name"></h5>
-                        <h5 th:text="${l.organisation}" class="film"></h5>
+                    <div class="card_item">
+                        <div class="card_inner">
+                            <h5 th:text="${l.username}" class="role_name"></h5>
+                            <h5 th:text="${l.organisation}" class="film"></h5>
+                            <button type="button" class="button__med1">
+                                <a th:href="@{'/users/detail/' + ${l.email}}">View</a>
+                            </button>
+                        </div>
                     </div>
-                </div>
                 </th:block>
             </div>
         </div>

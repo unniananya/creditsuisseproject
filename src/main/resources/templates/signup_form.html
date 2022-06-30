@@ -4,13 +4,14 @@
     <meta charset="ISO-8859-1">
     <title>Sign Up - CodeJava</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link th:rel="stylesheet" th:href="@{/styles/bootstrap-select.css}"/>
+    <script type="text/javascript" src="/webjars/popper.js/umd/popper.min.js"></script>
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/bootstrap-select.js}"></script>
     <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/styles/style1.css}" crossorigin="anonymous">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-<!--    <script  th:src="@{/js/style.js}"></script>-->
 </head>
 <body th:style="'background: url(/images/background1.svg) center center no-repeat fixed;'">
 <header>
@@ -99,7 +100,7 @@
                 <!--					</div>-->
                 <div class="col-8">
 <!--                <div class="col-8">-->
-                    <select th:field="*{industry}" multiple="multiple" id="myMulti">
+                    <select class="form-control selectpicker" th:field="*{industry}" id="industry" multiple>
                         <option value="Data">Data</option>
                         <option value="Software">Software</option>
                         <option value="Education">Education</option>
@@ -112,16 +113,17 @@
                     <br style="clear: both;" />
 <!--                    <input type="submit" value="Apply" th:field="*{industry}" class="apply"/>-->
 <!--                </div>-->
+
                 </div>
             </div>
-            <script  th:src="@{/js/style.js}"></script>
+
             <div class="form-group row">
                 <label class="col-4 col-form-label" style="color:#fff">Interest: </label>
                 <!--					<div class="col-8">-->
                 <!--						<input type="text" th:field="*{industry}" class="form-control" required minlength="2" maxlength="45"/>-->
                 <!--					</div>-->
                 <div class="col-8">
-                    <select th:field="*{interest}" multiple="multiple" id="myMulti1">
+                    <select class="form-control selectpicker" th:field="*{interest}" id="interest" multiple>
                         <option value="Analytics">Analytics</option>
                         <option value="Frontend">Frontend</option>
                         <option value="Backend">Backend</option>
@@ -131,11 +133,12 @@
                         <option value="Projects">Projects</option>
 
                     </select>
+
 <!--                    <br style="clear: both;" />-->
 <!--                    <input type="submit" value="Apply" th:field="*{interest}" class="apply"/>-->
                 </div>
             </div>
-            <script  th:src="@{/js/style1.js}"></script>
+
             <br/>
             <div class="form-group row">
                 <label class="col-4 col-form-label" style="color:#fff">Number of Years of Experience: </label>

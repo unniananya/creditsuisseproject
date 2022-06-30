@@ -106,6 +106,15 @@ public class AppController {
         return "account_success";
     }
 
+    @GetMapping("/users/detail/{email}")
+    public String viewDetails(@PathVariable("email") String email, Model model) {
+
+        User user = service.getByEmail(email);
+        model.addAttribute("user", user);
+        return "user_details";
+
+    }
+
     @GetMapping("/users/addPost")
     public String showAddPost(Model model)
     {

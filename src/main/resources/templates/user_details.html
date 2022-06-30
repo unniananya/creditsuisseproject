@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Welcome to Mentor Home</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
+    <!--    <script type="text/javascript" th:src="@{/js/webscoket.js}"></script>-->
+</head>
+<body th:style="'background: url(/images/background1.svg) center center no-repeat fixed;'">
+
+<header>
+    <nav>
+        <!--			<a href="#"><img class="logo" src="./images/logo.svg" alt="Travely Logo | Homepage" /></a>-->
+        <div class="links">
+            <form th:action="@{/logout}" method="post" onsubmit="logout()">
+
+                <input type="submit" value="Logout" class="button__med" />
+            </form>
+
+        </div>
+    </nav>
+</header>
+
+<main>
+    <th:block th:object="${user}">
+    <div class="col-md-6">
+        <div class="profile-head">
+            <h5 th:text="${user.username}"></h5>
+            <h6 th:text="${user.firstName}"></h6>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>
