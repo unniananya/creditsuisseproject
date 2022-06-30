@@ -33,10 +33,10 @@ public class PostController {
     @Autowired
     private PostRepository repo;
 
-    @GetMapping("/users/listPosts")
-    public String showExampleView(Model model)
+    @GetMapping("/users/listPosts/{id}")
+    public String showExampleView(@PathVariable("id") long id,Model model)
     {
-        List<Post> posts = postService.getAllPosts();
+        List<Post> posts = postService.getPostUser(id);
         model.addAttribute("posts", posts);
         return "listPosts";
     }
