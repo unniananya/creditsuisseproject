@@ -6,8 +6,9 @@
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/home.css}" crossorigin="anonymous">
 </head>
-<body>
+<body th:style="'background: url(/images/background1.svg) center center no-repeat fixed;'">
 <!--    <div class="card">-->
 <!--        <div class="card-header">-->
 <!--            <p class="h4 mb-2 text-center">Add Post</p>-->
@@ -32,7 +33,7 @@
 <!--            </form>-->
 <!--        </div>-->
 <!--    </div>-->
-
+<div class="hero_area">
 <div class="container text-center">
     <div>
         <h1>Add a Post</h1>
@@ -71,6 +72,7 @@
         </div>
 
     </form>
+</div>
 </div>
 </body>
 </html>
