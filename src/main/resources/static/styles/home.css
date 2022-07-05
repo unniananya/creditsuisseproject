@@ -26,6 +26,47 @@ nav {
   color: rgba(54, 48, 89, 0.8);
 }
 
+label {
+  font-weight: 500;
+  display: block;
+  margin: 4px 0;
+  text-transform: uppercase;
+  font-size: 13px;
+  overflow: hidden;
+
+  span {
+    float: right;
+    text-transform: none;
+    font-weight: 200;
+    line-height: 1em;
+    font-style: italic;
+    opacity: 0.8;
+  }
+}
+
+
+.form-controll {
+  display: block;
+  padding: 8px 16px;
+  width: 100%;
+  font-size: 16px;
+  background-color: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-weight: 200;
+
+  &:focus {
+    outline: 2px solid rgba(255,255,255,0.5);
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+}
+
+.form-group {
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
 .button__med {
   border: none;
   background-color: #938dea;
@@ -77,6 +118,13 @@ nav {
 
 .hero_area {
   height: 94vh;
+  background: -webkit-gradient(linear, left top, right top, from(#864ddf), to(#203376));
+  background: linear-gradient(to right, #864ddf, #203376);
+}
+
+
+.hero_area1 {
+  height: 130vh;
   background: -webkit-gradient(linear, left top, right top, from(#864ddf), to(#203376));
   background: linear-gradient(to right, #864ddf, #203376);
 }
@@ -332,6 +380,15 @@ a:focus {
 
 .welcome_section .img-box img {
   width: 100%;
+}
+
+.welcome_section .img-box1 {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.welcome_section .img-box1 img {
+  width: 70%;
 }
 
 .welcome_section .detail-box {

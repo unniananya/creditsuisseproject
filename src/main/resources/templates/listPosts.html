@@ -2,48 +2,94 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="ISO-8859-1">
-  <title>List of Posts</title>
+  <title>Sign Up - CodeJava</title>
   <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <link th:rel="stylesheet" th:href="@{/styles/bootstrap-select.css}"/>
+  <script type="text/javascript" src="/webjars/popper.js/umd/popper.min.js"></script>
   <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <script th:src="@{/js/bootstrap-select.js}"></script>
+  <link rel="stylesheet" th:href="@{/styles/styles.css}" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 </head>
-<body>
-<div class="col-12">
+<body th:style="'background: url(/images/background1.svg) center center no-repeat fixed;'">
+
+<header>
+  <nav>
+    <!--			<a href="#"><img class="logo" src="./images/logo.svg" alt="Travely Logo | Homepage" /></a>-->
+    <div class="links">
+      <form th:action="@{/logout}" method="post" onsubmit="logout()">
+
+        <input type="submit" value="Logout" class="button__med" />
+      </form>
+
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="info">
+<!--  <div class="wrapper">-->
+<!--    <div class="cards_wrap">-->
+<!--      <th:block th:each="post : ${posts}">-->
+<!--        <div class="card_item">-->
+<!--&lt;!&ndash;          <img th:src="@{${post.photoImagePath}}" style="width: 100px" />&ndash;&gt;-->
+<!--          <div class="card_inner">-->
+<!--            <img th:src="@{${post.photoImagePath}}" style="width: 100px" />-->
+<!--            <h5 th:text="${post.description}" class="film"></h5>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </th:block>-->
+<!--    </div>-->
+<!--  </div>-->
 
 
-  <h3 class="text-center">list of posts</h3>
+
+
+      <!--            <div class="header">Results</div>-->
+<!--      <th:block th:each="post : ${posts}">-->
+<!--      <div class="col-md-4">-->
+<!--          <div class="product-item">-->
+<!--            <img th:src="@{${post.photoImagePath}}"/>-->
+<!--            <div class="down-content">-->
+<!--              <p th:text="${post.description}" class="film"></p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--      </th:block>-->
+
+
+  <h3 class="text-center" style="color:#fff;">User's Posts</h3>
   <hr>
-  <table class="table">
-    <thead class="thead-dark">
-    <tr>
-      <th scope="col">image</th>
-      <th scope="col">id</th>
-      <th scope="col">description</th>
-      <th scope="col">delete post</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="post : ${posts}">
-      <td>
-        <img th:src="@{${post.photoImagePath}}" style="width: 100px" />
+  <table class="table" style="border-collapse:separate;border-spacing:0 15px;width:250px;margin-left: auto;margin-right: auto;">
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th style="text-align:center">Posts</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+    <tbody style="background: -webkit-gradient(linear, left top, right top, from(#864ddf), to(#203376));background: linear-gradient(to right, #864ddf, #203376);border-radius:15px;">
+    <tr th:each="post : ${posts}" style="border-radius:15px;">
+      <td style="text-align:center;border-radius:15px;">
+        <img th:src="@{${post.photoImagePath}}" style="height: 100px" />
+        <br style="clear: both;" />
+        </br>
+        <h4 style="color:#fff;">[[${post.description}]]</h4>
         <!--          [[${post.photoImagePath}]]-->
       </td>
       <!--        <th scope="row"><img alt="" th:src="*{'data:image/jpeg;base64,'+{post.image}}" style="width: 100px;height: 100px;"></th>-->
-      <td>[[*{post.id}]]
 
-      </td>
+<!--      <td>[[${post.description}]] &lt;!&ndash; Button trigger modal &ndash;&gt;-->
 
-      <td>[[${post.description}]] <!-- Button trigger modal -->
+<!--      </td>-->
 
-      </td>
-
-      <td><a th:href="@{/users/deletePost/{id}(id=${post.id})}"
-             class="btn btn-danger mt-4">delete</a></td>
+<!--      <td><a th:href="@{/users/deletePost/{id}(id=${post.id})}"-->
+<!--             class="btn btn-danger mt-4">delete</a></td>-->
     </tr>
     </tbody>
   </table>
   <hr>
-</div>
-
+  </section>
+</main>
 </body>
 </html>

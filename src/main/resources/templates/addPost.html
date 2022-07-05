@@ -33,46 +33,127 @@
 <!--            </form>-->
 <!--        </div>-->
 <!--    </div>-->
-<div class="hero_area">
-<div class="container text-center">
-    <div>
-        <h1>Add a Post</h1>
-    </div>
-    <form th:action="@{/users/addP}" th:object="${post}"
-          method="post" style="max-width: 600px; margin: 0 auto;"
-          enctype="multipart/form-data">
+<div class="hero_area1">
+        <!-- header section strats -->
+    <header class="header_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    <nav class="navbar navbar-expand-lg custom_nav-container ">
+                        <!--                        <a class="navbar-brand" href="index.html">-->
+                        <!--                        </a>-->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-        <input type="hidden" th:field="*{id}" />
-        <div class="m-3">
-            <!--                <input type="hidden" th:value="${#authentication.principal.user}" name='user'/>-->
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div class="d-flex  flex-column flex-lg-row align-items-center">
+                                <ul class="navbar-nav  ">
+                                    <li class="nav-item">
+                                        <form th:action="@{/logout}" method="post" onsubmit="logout()">
+                                            <input type="submit" value="Logout" class="button__med" />
+                                        </form>
+                                    </li>
 
-
-            <div class="form-group row">
-                <label class="col-4 col-form-label">Description </label>
-                <div class="col-8">
-                    <input type="text" th:field="*{description}" class="form-control"
-                           required minlength="2" maxlength="40"/>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
             </div>
-            <!--                <div class="custom-file mb-4">-->
-            <!--                    <input type="file" th:field="*{image}" name="file" class="custom-file-input"-->
-            <!--                           id="customFile"> <label class="custom-file-label"-->
-            <!--                                                   for="customFile">Post Image</label>-->
-            <!--                </div>-->
-            <div>
-
-                <label>Image: </label>
-                <input type="file" name="fileImage" id="fileImage" accept="image/png, image/jpeg" />
-
-            </div>
-
-            <div>
-                <button type="submit" class="btn btn-primary">Post</button>
-            </div>
         </div>
+    </header>
+    <h1 th:text="${message}" style="color:rgba(54, 48, 89, 0.6);text-align:center;"></h1>
+    <section class="welcome_section layout_padding">
+        <div class="container">
+            <div class="custom_heading-container">
+                <h2 style="color:#fff;">
+                    Add a Post
+                </h2>
+            </div>
+            <div class="layout_padding2">
+                <div class="img-box1">
+                    <img th:src="@{/images/marketing.png}" alt=""/>
+                </div>
+                <div class="detail-box">
+                    <form th:action="@{/users/addP}" th:object="${post}"
+                          method="post" style="max-width: 600px; margin: 0 auto;"
+                          enctype="multipart/form-data">
 
-    </form>
-</div>
+                        <input type="hidden" th:field="*{id}" />
+
+                            <!--                <input type="hidden" th:value="${#authentication.principal.user}" name='user'/>-->
+
+
+                            <div class="form-group">
+                                <label><span style="color:#fff;">Description</span></label>
+
+                                <input type="text" th:field="*{description}" class="form-controll"
+                                       required minlength="2" maxlength="40"/>
+
+                            </div>
+                            <!--                <div class="custom-file mb-4">-->
+                            <!--                    <input type="file" th:field="*{image}" name="file" class="custom-file-input"-->
+                            <!--                           id="customFile"> <label class="custom-file-label"-->
+                            <!--                                                   for="customFile">Post Image</label>-->
+                            <!--                </div>-->
+                            <div class="form-group file-area">
+
+                                <label><span style="color:#fff;">Choose an Image</span></label>
+                                <input type="file" name="fileImage" id="fileImage" accept="image/png, image/jpeg" style="color:#fff;"/>
+
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="button__med">Post</button>
+                            </div>
+
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+<!--<div class="container text-center">-->
+<!--    <div>-->
+<!--        <h1>Add a Post</h1>-->
+<!--    </div>-->
+<!--    <form th:action="@{/users/addP}" th:object="${post}"-->
+<!--          method="post" style="max-width: 600px; margin: 0 auto;"-->
+<!--          enctype="multipart/form-data">-->
+
+<!--        <input type="hidden" th:field="*{id}" />-->
+<!--        <div class="m-3">-->
+<!--            &lt;!&ndash;                <input type="hidden" th:value="${#authentication.principal.user}" name='user'/>&ndash;&gt;-->
+
+
+<!--            <div class="form-group row">-->
+<!--                <label class="col-4 col-form-label">Description </label>-->
+<!--                <div class="col-8">-->
+<!--                    <input type="text" th:field="*{description}" class="form-control"-->
+<!--                           required minlength="2" maxlength="40"/>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;                <div class="custom-file mb-4">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <input type="file" th:field="*{image}" name="file" class="custom-file-input"&ndash;&gt;-->
+<!--            &lt;!&ndash;                           id="customFile"> <label class="custom-file-label"&ndash;&gt;-->
+<!--            &lt;!&ndash;                                                   for="customFile">Post Image</label>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--            <div>-->
+
+<!--                <label>Image: </label>-->
+<!--                <input type="file" name="fileImage" id="fileImage" accept="image/png, image/jpeg" />-->
+
+<!--            </div>-->
+
+<!--            <div>-->
+<!--                <button type="submit" class="btn btn-primary">Post</button>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </form>-->
+<!--</div>-->
 </div>
 </body>
 </html>

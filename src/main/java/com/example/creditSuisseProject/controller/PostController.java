@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,7 +43,7 @@ public class PostController {
     }
 
     @PostMapping("/users/addP")
-    public String savePost(@AuthenticationPrincipal CustomUserDetails loggedUser, @ModelAttribute(name="post") Post post, @RequestParam("fileImage") MultipartFile multipartFile) throws IOException {
+    public String savePost(@AuthenticationPrincipal CustomUserDetails loggedUser, @ModelAttribute(name="post") Post post, @RequestParam("fileImage") MultipartFile multipartFile, RedirectAttributes ra) throws IOException {
 
         String email = loggedUser.getUsername();
         User user = service.getByEmail(email);
@@ -68,8 +69,8 @@ public class PostController {
         }
 
 //        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-
-        return "post_success";
+        ra.addFlashAttribute("message", "You have posted successfully!");
+        return "redirect:/users/addPost";
     }
 
 
@@ -77,11 +78,11 @@ public class PostController {
 
 
 
-    @GetMapping("users/deletePost/{id}")
-    public String deletePost(@PathVariable("id") Long id)
-    {
-
-        postService.deletePostById(id);
-        return "redirect:/listPosts";
-    }
+//    @GetMapping("users/deletePost/{id}")
+//    public String deletePost(@PathVariable("id") Long id)
+//    {
+//
+//        postService.deletePostById(id);
+//        return "redirect:/listPosts";
+//    }
 }
