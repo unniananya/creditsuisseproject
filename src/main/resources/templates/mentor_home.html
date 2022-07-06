@@ -88,11 +88,12 @@
                         <div class="row">
                             <div class="col-lg-5 col-md-6">
                                 <div class="slider_detail-box">
+<!--                                    <th:block th:object="${user}">-->
                                     <h1>
                                         Welcome <br/>
-                                        to <br/>
-                                        Mentor Home
+                                        [[${user.firstName}]] [[${user.lastName}]]
                                     </h1>
+<!--                                    </th:block>-->
                                     <h4>
                                         One stop portal for Mentor Mentee interaction.
                                     </h4>

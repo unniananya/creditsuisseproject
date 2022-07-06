@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AppController {
@@ -50,12 +51,18 @@ public class AppController {
     }
 
     @GetMapping("/users/mentee_home")
-    public String viewMenteeHomePage() {
+    public String viewMenteeHomePage(Model model, @AuthenticationPrincipal CustomUserDetails loggedUser) {
+        String email = loggedUser.getUsername();
+        User user = service.getByEmail(email);
+        model.addAttribute("user", user);
         return "mentee_home";
     }
 
     @GetMapping("/users/mentor_home")
-    public String viewMentorHomePage() {
+    public String viewMentorHomePage(Model model, @AuthenticationPrincipal CustomUserDetails loggedUser) {
+        String email = loggedUser.getUsername();
+        User user = service.getByEmail(email);
+        model.addAttribute("user", user);
         return "mentor_home";
     }
 
@@ -100,7 +107,7 @@ public class AppController {
     }
 
     @PostMapping("/users/account/update")
-    public String saveDetails(User user, @AuthenticationPrincipal CustomUserDetails loggedUser){
+    public String saveDetails(User user, @AuthenticationPrincipal CustomUserDetails loggedUser, RedirectAttributes ra){
 
 
 /*        loggedUser.setFirstName(user.getFirstName());
@@ -109,8 +116,8 @@ public class AppController {
         loggedUser.setInterest(user.getInterest());
         loggedUser.setOrganisation(user.getOrganisation());*/
         service.save1(user);
-
-        return "account_success";
+        ra.addFlashAttribute("message", "You have changed you account details");
+        return "redirect:/users/account";
     }
 
     @GetMapping("/users/detail/{email}")

@@ -63,7 +63,10 @@
             </div>
         </div>
     </header>
-    <h1 th:text="${message}" style="color:rgba(54, 48, 89, 0.6);text-align:center;"></h1>
+<!--    <h1 th:text="${message}" style="color:rgba(54, 48, 89, 0.6);text-align:center;"></h1>-->
+    <div th:if="${message != null}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
     <section class="welcome_section layout_padding">
         <div class="container">
             <div class="custom_heading-container">
